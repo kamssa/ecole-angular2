@@ -5,8 +5,8 @@ import 'rxjs/add/operator/map';
 export class PersonneService {
 
     constructor(public http:Http) { }
-   getUsers(){
+   getPersonnes(){
     return this.http.get('http://localhost:8080/personnes')
-               .map(res => res.json);
+               .map(res => res.json());
    }
 }
