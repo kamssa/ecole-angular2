@@ -1,14 +1,56 @@
-<div>
-  <h1>
-HELLO
-  </h1>
-   <ul>
-    <li *ngFor="let p of personnes" >
-      {{p.nom}}
-    </li>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 ">
+      <div class="alert-info" align="center">
+        <h1>
+          les personnes de la base de donnée
+        </h1>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8 ">
+      <p-dataTable [value]="personnes" selectionMode="single" [(selection)]="selectedPersonne" (onRowSelect)="onRowSelect($event)" [paginator]="true" rows="15" [responsive]="true">
+        <header>Personnes</header>
 
-  </ul>
-</div>
+        <p-column field="titre" header="TITRE" [sortable]="true"></p-column>
+        <p-column field="cni" header="CNI" [sortable]="true"></p-column>
+        <p-column field="nom" header="NOM" [sortable]="true"></p-column>
+        <p-column field="prenom" header="PRENOM" [sortable]="true"></p-column>
+
+
+        <footer><div class="ui-helper-clearfix" style="width:100%"><button type="button" pButton icon="fa-plus" style="float:left" (click)="showDialogToAdd()" label="Ajouter"></button></div></footer>
+      </p-dataTable>
+
+      <p-dialog header="Details sur les personnes" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true">
+        <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="personne">
+
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="titre">TITRE</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="titre" [(ngModel)]="personne.titre" /></div>
+          </div>
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="cni">CNI</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="cni" [(ngModel)]="personne.cni" /></div>
+          </div>
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="nom">NOM</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="nom" [(ngModel)]="personne.nom" /></div>
+          </div>
+          <div class="ui-grid-row">
+            <div class="ui-grid-col-4"><label for="prenom">PRENOM</label></div>
+            <div class="ui-grid-col-8"><input pInputText id="prenom" [(ngModel)]="personne.prenom" /></div>
+          </div>
+
+        </div>
+        <footer>
+          <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+            <button type="button" pButton icon="fa-close" (click)="deletePersonne()" label="Supprimer"></button>
+            <button type="button" pButton icon="fa-check" (click)="savePersonne()" label="Ajouter"></button>
+          </div>
+        </footer>
+      </p-dialog>
+</div></div>
 
 
 

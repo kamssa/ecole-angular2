@@ -7,13 +7,46 @@ export  class Adresse{
  private _contact:string;
 
 
-  constructor(codepostal: string, quartier: string, ville: string, email: string, contact: string) {
-    this._codepostal = codepostal;
-    this._quartier = quartier;
-    this._ville = ville;
-    this._email = email;
-    this._contact = contact;
+  constructor() {
   }
 
+  get codepostal(): string {
+    return this._codepostal;
+  }
 
+  set codepostal(value: string) {
+    this._codepostal = value;
+  }
+
+  get quartier(): string {
+    return this._quartier;
+  }
+
+  set quartier(value: string) {
+    this._quartier = value;
+  }
+
+  get ville(): string {
+    return this._ville;
+  }
+
+  set ville(value: string) {
+    this._ville = value;
+  }
+
+  get email(): string {
+    return this._email;
+  }
+
+  set email(value: string) {
+    this._email = value;
+  }
+
+  get contact(): string {
+    return this._contact;
+  }
+
+  set contact(value: string) {
+    this._contact = value;
+  }
 }
